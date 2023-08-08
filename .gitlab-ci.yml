@@ -4,7 +4,7 @@ darkube_build_test-app_asghar:
     refs:
     - master
   script:
-    - python asghar.py
+    - python readAsghar.py
   stage: build
 darkube_deploy_test-app_asghar:
   image: hamravesh.hamdocker.ir/public/darkube-cli:v1.1
