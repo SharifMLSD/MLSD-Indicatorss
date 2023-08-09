@@ -6,6 +6,7 @@ DOCKER_REGISTRY = registry.hamdocker.ir/mlsd-indicatorss
 IMAGE_TAG := $(VERSION)
 IMAGE_NAME := $(DOCKER_REGISTRY)/stockprediction
 IMAGE_NAME_TAG := $(IMAGE_NAME):$(IMAGE_TAG)
+# ASGHAR ?= $(ASGHAR)
 
 docker-build:
 	docker build \
@@ -18,4 +19,7 @@ docker-build:
 docker-push:
 	docker push $(IMAGE_NAME_TAG)
 	docker push $(IMAGE_NAME):latest
+
+asghar:
+	echo $(Asghar)
 
