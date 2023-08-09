@@ -1,8 +1,8 @@
 make-runner:
   image: hamravesh.hamdocker.ir/public/darkube-cli:v1.1
   script:
-    docker build -f runner/Dockerfile --tag hamgit.ir/aliabdollahi024a/stockprediction/runner:v1.0 .
-    docker push hamgit.ir/aliabdollahi024a/stockprediction/runner:v1.0
+    - docker build -f runner/Dockerfile --tag hamgit.ir/aliabdollahi024a/stockprediction/runner:v1.0 .
+    - docker push hamgit.ir/aliabdollahi024a/stockprediction/runner:v1.0
 
 
 darkube_build_test-app_mlsdandicator:
