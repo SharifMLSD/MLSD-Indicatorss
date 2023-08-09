@@ -1,21 +1,12 @@
-make-runner:
-  image: hamravesh.hamdocker.ir/public/darkube-cli:v1.1
-  script:
-    - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY
-    - docker build -f runner/Dockerfile --tag registry.hamdocker.ir/mlsd-indicatorss/stockprediction/runner:v1.0 .
-    - docker push registry.hamdocker.ir/mlsd-indicatorss/stockprediction/runner:v1.0
-
-
 darkube_build_test-app_mlsdandicator:
-  image: hamravesh.hamdocker.ir/public/darkube-cli:v1.1
+  image: registry.hamdocker.ir/mlsd-indicatorss/stockprediction/runner:v1.0
   only:
     refs:
     - master
   script:
-    - export IMAGE="registry.hamdocker.ir/mlsd-indicatorss"
     - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY 
-    - 'darkube build --push -t $IMAGE:$CI_COMMIT_SHORT_SHA -t $IMAGE:$CI_COMMIT_REF_SLUG
-       --file Dockerfile --build-context . --build-arg ENV=production'
+    - make docker-build
+    - make docker-push
   stage: build
 # darkube_deploy_test-app_asghar:
 #   image: hamravesh.hamdocker.ir/public/darkube-cli:v1.1
