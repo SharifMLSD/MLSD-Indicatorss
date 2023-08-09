@@ -5,16 +5,16 @@ make-runner:
     - docker build -f runner/Dockerfile --tag registry.hamdocker.ir/mlsd-indicatorss/stockprediction/runner:v1.0 .
     - docker push registry.hamdocker.ir/mlsd-indicatorss/stockprediction/runner:v1.1
 
-darkube_build_test-app_mlsdandicator:
-  image: registry.hamdocker.ir/mlsd-indicatorss/stockprediction/runner:v1.1
-  only:
-    refs:
-    - master
-  script:
-    - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY 
-    - make docker-build
-    - make docker-push
-  stage: build
+# darkube_build_test-app_mlsdandicator:
+#   image: registry.hamdocker.ir/mlsd-indicatorss/stockprediction/runner:v1.1
+#   only:
+#     refs:
+#     - master
+#   script:
+#     - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY 
+#     - make docker-build
+#     - make docker-push
+#   stage: build
 # darkube_deploy_test-app_asghar:
 #   image: hamravesh.hamdocker.ir/public/darkube-cli:v1.1
 #   only:
