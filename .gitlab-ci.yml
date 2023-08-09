@@ -15,7 +15,5 @@ deploy:
     refs:
     - master
   script:
-    - 'darkube deploy --token ${DEPLOY_TOKEN}
-      --app-id ${APP_ID}  --image-tag "${CI_COMMIT_SHORT_SHA}"
-      --job-id "${CI_JOB_ID}"'
+    - make docker-deploy
   stage: deploy
