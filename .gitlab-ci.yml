@@ -2,7 +2,7 @@ make-runner:
   image: hamravesh.hamdocker.ir/public/darkube-cli:v1.1
   script:
     - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY
-    - docker build -f runner/Dockerfile --tag registry.hamdocker.ir/mlsd-indicatorss/stockprediction/runner:v1.0 .
+    - docker build -f runner/Dockerfile --tag registry.hamdocker.ir/mlsd-indicatorss/stockprediction/runner:v1.1 .
     - docker push registry.hamdocker.ir/mlsd-indicatorss/stockprediction/runner:v1.1
 
 # darkube_build_test-app_mlsdandicator:
