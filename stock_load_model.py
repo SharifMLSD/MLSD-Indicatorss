@@ -147,11 +147,8 @@ def test_model(x):
         output = model(x.unsqueeze(1)).numpy()
     return output
 
-def test_csv(path):
-    print('Reading file : ', path)
-    X = read_csv(path)
+def test_csv(X):
+    # X = read_csv(path)
     x = prepare_input(X)
-    print('File loaded : ', path)
     output = test_model(x)
-    print('Output generated', path)
     return output

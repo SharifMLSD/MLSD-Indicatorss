@@ -29,21 +29,29 @@ def predict(file: UploadFile = File(...)):
     print("before try") 
     start = time.perf_counter()  
 
-    file_bytes = file.file.read()
+    # file_bytes = file.file.read()
     
-    try:
-        contents = file_bytes
-        with open("uploaded_" + file.filename, "wb") as f:
-            f.write(contents)
-    except Exception:
-        return {"message": "There was an error uploading the file"}
-    finally:
-        file.file.close()
+    # try:
+    #     contents = file_bytes
+    #     with open("uploaded_" + file.filename, "wb") as f:
+    #         f.write(contents)
+    # except Exception:
+    #     return {"message": "There was an error uploading the file"}
+    # finally:
+    #     file.file.close()
+
+    contents = file.file.read()
+    buffer = BytesIO(contents)
+    df = pd.read_csv(buffer)
+    buffer.close()
+    file.file.close()
     
 
     Metrics.my_basic_counter.inc()
     
-    output = test_csv("uploaded_" + file.filename)
+    # output = test_csv("uploaded_" + file.filename)
+    output = test_csv(df)
+    
     end = time.perf_counter() - start
     Metrics.h.observe(end)
     # TODO: Fix the label part
