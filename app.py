@@ -51,9 +51,9 @@ def predict(file: UploadFile = File(...)):
 
     label_pred = int(output[0][0] >= 0.8)
     if label_pred == 0:
-        Metrics.pred_counter.labels(pred='POSITIVE').inc()
-    else:
         Metrics.pred_counter.labels(pred='NEGATIVE').inc()
+    else:
+        Metrics.pred_counter.labels(pred='POSITIVE').inc()
 
     return {"label": label_pred}
 
