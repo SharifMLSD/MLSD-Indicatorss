@@ -4,10 +4,9 @@ build:
     refs:
     - master
   script:
-    - ls
-    # - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY 
-    # - make docker-build
-    # - make docker-push
+    - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY 
+    - make docker-build
+    - make docker-push
   stage: build
 
 deploy:
