@@ -25,7 +25,7 @@ def test_end_to_end_sample():
     with open(file_path , "rb") as file:
         files = {"file": file}
         response = requests.post(post_url, files=files)
-    assert response.status_code == 200
+    assert int(response.json()['label']) == 1
 
 
 def test_model_accuracy():
@@ -36,4 +36,5 @@ def test_model_accuracy():
 if __name__=="__main__":
     test_get()
     test_post()
+    test_end_to_end_sample()
     test_model_accuracy()
