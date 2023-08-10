@@ -1,7 +1,7 @@
 COMMIT = $(shell git rev-parse HEAD)
-CI_JOB_ID = $(shell echo $CI_JOB_ID)
-DEPLOY_TOKEN = $(shell echo $DEPLOY_TOKEN)
-APP_ID = $(shell echo $APP_ID)
+# CI_JOB_ID = $(shell echo $CI_JOB_ID)
+# DEPLOY_TOKEN = $(shell echo $DEPLOY_TOKEN)
+# APP_ID = $(shell echo $APP_ID)
 VERSION ?= $(shell bash -o pipefail -c "$(GIT) show-ref --tags -d 2> /dev/null | grep $(COMMIT) | sed -e 's,.* refs/tags/,,' -e 's/\^{}//' | sed -n 1p"  || echo "$(COMMIT)")
 
 ROOT := hamgit.ir/aliabdollahi024a/stockprediction
