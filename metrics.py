@@ -43,6 +43,6 @@ class Metrics:
 
     h = Histogram('request_latency_seconds',
                'latency of user request in seconds',
-                buckets=[0.0001, 0.002, 0.03, 0.4, 1],
+                buckets=[0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.25, 1.5, 1.75, 2],
                 registry=get_registry()
     )   
