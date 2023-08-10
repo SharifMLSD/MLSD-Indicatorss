@@ -3,6 +3,9 @@ from prometheus_client import multiprocess
 from prometheus_client import CollectorRegistry
 import os
 import psutil
+import time
+import random
+
 
 
 def get_registry():
@@ -13,21 +16,44 @@ def get_registry():
     multiprocess.MultiProcessCollector(registry)
     return registry
 
+
+
+
 def start_metrics(port):
     start_http_server(port, registry=get_registry())
 
 
+
+
 class Metrics:
 
-    my_basic_counter = Counter(
-        'my_basic_counter',
-        'A basic counter.',
+    GET_counter = Counter(
+        'GET_counter',
+        'Counting get requests',
+        registry=get_registry()
+    )
+
+    POST_counter = Counter(
+        'POST_counter',
+        'Counting post requests',
+        registry=get_registry()
+    )
+
+    positive_pred_counter = Counter(
+        'positive_pred_counter',
+        'number of models positive prediction',
+        registry=get_registry()
+    )
+
+    negative_pred_counter = Counter(
+        'negative_pred_counter',
+        'number of models negative prediction',
         registry=get_registry()
     )
 
 
     h = Histogram('request_latency_seconds',
-               'Description of histogram',
+               'latency of user request in seconds',
                 buckets=[0.0001, 0.002, 0.03, 0.4, 1],
                 registry=get_registry()
     )   

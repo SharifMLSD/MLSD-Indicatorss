@@ -14,6 +14,8 @@ COPY requirements.txt $DIR/
 
 RUN pip install -r requirements.txt
 
+COPY Makefile $DIR/
+
 COPY app.py $DIR/
 COPY Makefile $DIR/
 COPY metrics.py $DIR/
@@ -29,8 +31,6 @@ COPY modelV2.pth $DIR/
 COPY modelV1.pth $DIR/
 
 COPY data/ $DIR/data
-
-RUN ls --recursive $DIR/
 
 CMD python app.py
 
