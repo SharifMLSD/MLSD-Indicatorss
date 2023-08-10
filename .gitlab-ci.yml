@@ -4,6 +4,7 @@ darkube_build_test-app_mlsdandicator:
     refs:
     - master
   script:
+    - apt install make
     - export IMAGE="registry.hamdocker.ir/hamravesh/build"
     - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY 
     - make docker-build docker-push
