@@ -1,15 +1,12 @@
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
-<title>Test</title>
-
+    <meta charset="utf-8">
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+    <title>Test</title>
 </head>
 
 <body>
-
     <style>
-
         .center {
             position: relative;
             width: 90%;
@@ -27,10 +24,19 @@
             display: inline-block;
             font-size: 16px;
             font-weight: bold;
-            font-family:'Courier New', Courier, monospace;
+            font-family: 'Courier New', Courier, monospace;
+            transition: background-color 0.3s ease;
         }
 
-        img { 
+        .button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        label:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        img {
             width: 30%;
             height: auto;
         }
@@ -71,24 +77,24 @@
                 reader.readAsDataURL(file);
             }
         }
-    
+
         function uploadFile(file) {
             var file = document.getElementById('fileInput').files[0];
             if (file) {
                 var formData = new FormData();
                 formData.append('file', file);
                 fetch('https://mlsd-indicatorss.darkube.app/predict', {
-                        method: 'POST',
-                        body: formData,
-                        // credentials: "include",
-                    })
+                    method: 'POST',
+                    body: formData,
+                    // credentials: "include",
+                })
                     .then(response => response.json())
                     .then(data => {
                         document.getElementById("serverMsg").innerHTML = "Predicted Label: " + "<span style='color: light-green; font-weight: bolder;'>" + data.label + "</span>"
                     })
                     .catch(error => {
                         console.error(error);
-                });
+                    });
             }
         }
     </script>
@@ -104,6 +110,5 @@
         <!-- <img height="200"> -->
         <p id="box"> </p>
     </div>
-
 </body>
 </html>
