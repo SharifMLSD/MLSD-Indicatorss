@@ -25,5 +25,5 @@ deploy:
     refs:
     - master
   script:
-    - make docker-deploy
+    - make darkube-deploy
   stage: deploy

@@ -14,7 +14,7 @@ import time
 
 
 
-app = FastAPI()
+app = FastAPI(debug=True)
 templates = Jinja2Templates(directory=".") # Change this path accordingly
 
 @app.get("/", response_class=HTMLResponse)
