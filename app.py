@@ -24,7 +24,7 @@ def index(request: Request):
     Metrics.my_basic_counter.inc()
     return templates.TemplateResponse("index.html", {"request": request})
 
-@app.post("https://mlsd-indicatorss.darkube.app//predict")
+@app.post("/predict")
 def predict(file: UploadFile = File(...)): 
     print("before try") 
     start = time.perf_counter()  
