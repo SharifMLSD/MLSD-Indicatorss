@@ -22,7 +22,7 @@ templates = Jinja2Templates(directory=".") # Change this path accordingly
 @app.get("/", response_class=HTMLResponse)
 def index(request: Request):
 
-    Metrics.GET_counter.inc()
+    Metrics.Request_counter.labels(method='GET').inc()
     return templates.TemplateResponse("index.html", {"request": request})
 
 @app.post("/predict")
@@ -41,7 +41,7 @@ def predict(file: UploadFile = File(...)):
         file.file.close()
     
 
-    Metrics.POST_counter.inc()
+    Metrics.Request_counter.labels(method='POST').inc()
     
     output = test_csv("uploaded_" + file.filename)
     
@@ -51,9 +51,9 @@ def predict(file: UploadFile = File(...)):
 
     label_pred = int(output[0][0] >= 0.8)
     if label_pred == 0:
-        Metrics.negative_pred_counter.inc()
+        Metrics.pred_counter.labels(pred='POSITIVE').inc()
     else:
-        Metrics.positive_pred_counter.inc()
+        Metrics.pred_counter.labels(pred='NEGATIVE').inc()
 
     return {"label": label_pred}
 

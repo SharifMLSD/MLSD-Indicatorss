@@ -27,30 +27,19 @@ def start_metrics(port):
 
 class Metrics:
 
-    GET_counter = Counter(
-        'GET_counter',
-        'Counting get requests',
+    Request_counter = Counter(
+        'Request_counter',
+        'Counting get or post requests',
+        ['method'],
         registry=get_registry()
     )
 
-    POST_counter = Counter(
-        'POST_counter',
-        'Counting post requests',
+    pred_counter = Counter(
+        'pred_counter',
+        'number of models positive or negetive prediction',
+        ['pred'],
         registry=get_registry()
     )
-
-    positive_pred_counter = Counter(
-        'positive_pred_counter',
-        'number of models positive prediction',
-        registry=get_registry()
-    )
-
-    negative_pred_counter = Counter(
-        'negative_pred_counter',
-        'number of models negative prediction',
-        registry=get_registry()
-    )
-
 
     h = Histogram('request_latency_seconds',
                'latency of user request in seconds',
