@@ -13,7 +13,7 @@ IMAGE_NAME_TAG := $(IMAGE_NAME):$(IMAGE_TAG)
 docker-build:
 	docker build \
 	--file Dockerfile \
-	--tag "$(IMAGE_NAME_TAG)"\
+	--tag "$(IMAGE_NAME_TAG)" \
 	.
 
 	docker tag $(IMAGE_NAME_TAG) $(IMAGE_NAME):latest
