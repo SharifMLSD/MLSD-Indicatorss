@@ -4,7 +4,7 @@ darkube_build_test-app_mlsdandicator:
     refs:
     - master
   script:
-    - export IMAGE="registry.hamdocker.ir/hamravesh/build"
+    - export IMAGE="registry.hamdocker.ir/hamravesh/mlsd-indicatorss/mlsd-darkube"
     # - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY 
     - 'darkube build --push -t $IMAGE:$CI_COMMIT_SHORT_SHA -t $IMAGE:$CI_COMMIT_REF_SLUG
        --file Dockerfile --build-context . --build-arg ENV=production'
