@@ -15,8 +15,10 @@ COPY requirements.txt $DIR/
 RUN pip install -r requirements.txt
 
 COPY app.py $DIR/
+COPY Makefile $DIR/
 COPY metrics.py $DIR/
 COPY stock_load_model.py $DIR/
+COPY test_app.py $DIR/
 
 COPY index.html $DIR/
 
@@ -25,6 +27,10 @@ COPY vabemellat_30min_200.csv $DIR/
 COPY modelV2.pth $DIR/
 
 COPY modelV1.pth $DIR/
+
+COPY data/ $DIR/data
+
+RUN ls --recursive $DIR/
 
 CMD python app.py
 

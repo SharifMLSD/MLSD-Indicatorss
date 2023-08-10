@@ -140,9 +140,10 @@ class IntegerTransformer3(nn.Module):
         out = self.fc2(out).softmax(dim=1)
         return out
 
-def test_model(x):  
+def test_model_single_input(x):  
     model = IntegerTransformer3(num_embeddings=window_size, embedding_dim=9, num_heads=4, num_layers=2)
     model.load_state_dict(torch.load('modelV1.pth', map_location=torch.device('cpu')))
+    model.eval()
     with torch.no_grad():
         output = model(x.unsqueeze(1)).numpy()
     return output
@@ -150,5 +151,56 @@ def test_model(x):
 def test_csv(path):
     X = read_csv(path)
     x = prepare_input(X)
-    output = test_model(x)
+    output = test_model_single_input(x)
     return output
+
+def test_model_ci():
+    model = IntegerTransformer3(num_embeddings=window_size, embedding_dim=9, num_heads=4, num_layers=2)
+    model.load_state_dict(torch.load('modelV1.pth', map_location=torch.device('cpu')))
+    model.eval()
+
+    val_accuracy = 0
+    val_num_samples = 0
+    val_true = []
+    val_pred = []
+
+    val_x = torch.load('data/X_val_V1.pt')
+    val_y = torch.load('data/y_val_V1.pt')
+
+    val_dataset = TensorDataset(val_x, val_y)
+    val_dataloader = DataLoader(val_dataset, batch_size=32, shuffle=True)
+        
+    for i, (X_batch, y_batch) in enumerate(val_dataloader):
+
+        outputs = model(X_batch.unsqueeze(1).to('cpu'))
+
+        _, predicted = torch.max(outputs, 1)
+
+        val_pred += list(predicted.cpu())
+        val_true += [y_batch]
+        val_accuracy += torch.sum(predicted == y_batch.to('cpu')).item()
+
+        val_num_samples += len(X_batch)
+
+    avg_accuracy = val_accuracy / val_num_samples
+    
+    val_y_true = []
+    for q in val_true:
+        val_y_true += q
+    
+    val_y_pred = []
+    for q in val_pred:
+        val_y_pred += [q.item()]
+    
+    tn, fp, fn, tp = confusion_matrix(val_y_true, val_y_pred).ravel()
+    false_positive_rate = fp / (fp + tn)
+    false_negative_rate = fn / (tp + fn)
+    true_negative_rate = tn / (tn + fp)
+    false_discovery_rate = fp/ (tp + fp)
+    recall = recall_score(val_y_true, val_y_pred)
+    precision = precision_score(val_y_true, val_y_pred)
+    acc = accuracy_score(val_y_true, val_y_pred)
+    cohen_kappa = cohen_kappa_score(val_y_true, val_y_pred)
+    matthews_corr = matthews_corrcoef(val_y_true, val_y_pred)
+
+    return acc, precision

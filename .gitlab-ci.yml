@@ -16,8 +16,7 @@ test:
     refs:
     - master
   script:
-    - make test-app
-  when: manual
+    - make darkube-test
   stage: test
 
 deploy:

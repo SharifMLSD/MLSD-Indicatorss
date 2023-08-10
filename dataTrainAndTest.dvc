@@ -1,0 +1,5 @@
+outs:
+- md5: 5798c6808303d2cb73b26248c9334b4c.dir
+  size: 85424906
+  nfiles: 4
+  path: dataTrainAndTest
