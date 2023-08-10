@@ -25,8 +25,8 @@ docker-push:
 docker-deploy:
 	darkube deploy --token $(DEPLOY_TOKEN) \
 	--app-id $(APP_ID)  \
-	--image-tag $(IMAGE_NAME_TAG) \
-	--job-id $(CI_JOB_ID)
+	--image-tag "$(IMAGE_NAME_TAG)" \
+	--job-id "$(CI_JOB_ID)""
 
 
 
