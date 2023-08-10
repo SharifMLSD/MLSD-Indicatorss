@@ -4,10 +4,10 @@ darkube_build_test-app_mlsdandicator:
     refs:
     - master
   script:
-    - sudo apk add make
     - export IMAGE="registry.hamdocker.ir/hamravesh/build"
-    - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY 
-    - make docker-build docker-push
+    # - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY 
+    - 'darkube build --push -t $IMAGE:$CI_COMMIT_SHORT_SHA -t $IMAGE:$CI_COMMIT_REF_SLUG
+       --file Dockerfile --build-context . --build-arg ENV=production'
   stage: build
 # darkube_deploy_test-app_asghar:
 #   image: hamravesh.hamdocker.ir/public/darkube-cli:v1.1
