@@ -1,18 +1,20 @@
-darkube_build_test-app_asghar:
+darkube_build_test-app_mlsdandicator:
   image: hamravesh.hamdocker.ir/public/darkube-cli:v1.1
   only:
     refs:
     - master
   script:
-    - python readAsghar.py
+    - export IMAGE="registry.hamdocker.ir/hamravesh/build"
+    - docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD $REGISTRY 
+    - make docker-build docker-push
   stage: build
-darkube_deploy_test-app_asghar:
-  image: hamravesh.hamdocker.ir/public/darkube-cli:v1.1
-  only:
-    refs:
-    - master
-  script:
-    - 'darkube deploy --token ${DEPLOY_TOKEN}
-      --app-id ${APP_ID}  --image-tag "${CI_COMMIT_SHORT_SHA}"
-      --job-id "${CI_JOB_ID}"'
-  stage: deploy
+# darkube_deploy_test-app_asghar:
+#   image: hamravesh.hamdocker.ir/public/darkube-cli:v1.1
+#   only:
+#     refs:
+#     - master
+#   script:
+#     - 'darkube deploy --token ${DEPLOY_TOKEN}
+#       --app-id ${APP_ID}  --image-tag "${CI_COMMIT_SHORT_SHA}"
+#       --job-id "${CI_JOB_ID}"'
+#   stage: deploy
