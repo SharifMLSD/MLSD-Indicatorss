@@ -77,9 +77,10 @@
             if (file) {
                 var formData = new FormData();
                 formData.append('file', file);
-                fetch('/predict', {
+                fetch('https://mlsd-indicatorss.darkube.app/predict', {
                         method: 'POST',
                         body: formData,
+                        credentials: "include",
                     })
                     .then(response => response.json())
                     .then(data => {
