@@ -19,7 +19,7 @@ make-runner:
 #     - make docker-push
 #   stage: build
 
-darkube_deploy_test-app_asghar:
+deploy-runner:
   image: hamravesh.hamdocker.ir/public/darkube-cli:v1.1
   only:
     refs:
