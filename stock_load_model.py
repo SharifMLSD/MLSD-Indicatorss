@@ -143,6 +143,7 @@ class IntegerTransformer3(nn.Module):
 def test_model(x):  
     model = IntegerTransformer3(num_embeddings=window_size, embedding_dim=9, num_heads=4, num_layers=2)
     model.load_state_dict(torch.load('modelV1.pth', map_location=torch.device('cpu')))
+    model.eval()
     with torch.no_grad():
         output = model(x.unsqueeze(1)).numpy()
     return output
