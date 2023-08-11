@@ -19,7 +19,7 @@ COPY Makefile $DIR/
 COPY metrics.py $DIR/
 COPY stock_load_model.py $DIR/
 COPY test_app.py $DIR/
-COPY -r data $DIR/
+COPY data $DIR/
 
 COPY index.html $DIR/
 
