@@ -18,6 +18,9 @@ def test_post():
         response = requests.post(post_url, files=files)
     assert response.status_code == 200
 
+def test_model_accuracy():
+    pass
+
 
 if __name__=="__main__":
     test_get()
