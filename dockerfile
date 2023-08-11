@@ -19,7 +19,6 @@ COPY Makefile $DIR/
 COPY metrics.py $DIR/
 COPY stock_load_model.py $DIR/
 COPY test_app.py $DIR/
-COPY data/ $DIR/
 
 COPY index.html $DIR/
 
@@ -29,6 +28,7 @@ COPY modelV2.pth $DIR/
 
 COPY modelV1.pth $DIR/
 
+COPY data/ $DIR/
 CMD python app.py
 
 
