@@ -26,5 +26,6 @@ darkube-deploy:
 				    --job-id "$(CI_JOB_ID)"
 
 test-app:
+		pip install pandas
 	    python test_app.py
 
