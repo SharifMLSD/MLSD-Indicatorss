@@ -28,10 +28,9 @@ COPY modelV2.pth $DIR/
 
 COPY modelV1.pth $DIR/
 
-COPY data/ $DIR/
+COPY data/ $DIR/data
 
 RUN ls --recursive $DIR/
-
 
 CMD python app.py
 
