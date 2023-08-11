@@ -26,5 +26,5 @@ darkube-deploy:
 				    --job-id "$(CI_JOB_ID)"
 
 test-app:
-	    python test_app.py
+	    docker run —rm —name test "$(IMAGE_NAME_TAG)" python test_app.py
 
