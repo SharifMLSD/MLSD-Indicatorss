@@ -15,6 +15,7 @@ COPY requirements.txt $DIR/
 RUN pip install -r requirements.txt
 
 COPY app.py $DIR/
+COPY Makefile $DIR/
 COPY metrics.py $DIR/
 COPY stock_load_model.py $DIR/
 
