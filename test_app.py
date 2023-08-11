@@ -24,3 +24,5 @@ def test_model_accuracy():
 
 if __name__=="__main__":
     test_get()
+    test_post()
+    test_model_accuracy()

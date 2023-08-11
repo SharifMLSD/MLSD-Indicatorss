@@ -17,7 +17,6 @@ test:
     - master
   script:
     - make test-app
-  when: manual
   stage: test
 
 deploy:
