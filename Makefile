@@ -25,5 +25,6 @@ darkube-deploy:
 				--image-tag "$(IMAGE_TAG)" \
 				    --job-id "$(CI_JOB_ID)"
 
-
+test-app:
+	    python test_app.py
 
