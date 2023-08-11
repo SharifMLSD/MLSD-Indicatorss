@@ -16,7 +16,6 @@ test:
     refs:
     - master
   script:
-    - pip list | grep pandas
     - python test_app.py
   stage: test
 

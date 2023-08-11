@@ -1,5 +1,6 @@
 import requests
 import time
+import pandas as pd
 from stock_load_model import test_model_ci
 
 
