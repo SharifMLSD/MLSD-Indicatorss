@@ -154,7 +154,6 @@ def test_csv(path):
     output = test_model_single_input(x)
     return output
 
-
 def test_model_ci():
     model = IntegerTransformer3(num_embeddings=window_size, embedding_dim=9, num_heads=4, num_layers=2)
     model.load_state_dict(torch.load('modelV1.pth', map_location=torch.device('cpu')))

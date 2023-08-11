@@ -25,5 +25,5 @@ deploy:
     refs:
     - master
   script:
-    - make darkube-deploy
+    - python test_app.py
   stage: deploy
