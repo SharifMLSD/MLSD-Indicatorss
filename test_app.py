@@ -25,6 +25,7 @@ def test_end_to_end_sample():
     with open(file_path , "rb") as file:
         files = {"file": file}
         response = requests.post(post_url, files=files)
+    print(response.text)
     assert response.status_code == 200
 
 
@@ -36,4 +37,5 @@ def test_model_accuracy():
 if __name__=="__main__":
     test_get()
     test_post()
+    test_end_to_end_sample()
     test_model_accuracy()
