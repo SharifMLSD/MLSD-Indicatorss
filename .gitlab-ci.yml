@@ -16,7 +16,7 @@ test:
     refs:
     - master
   script:
-    - python test_app.py
+    - make test-app
   stage: test
 
 deploy:
