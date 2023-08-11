@@ -30,7 +30,7 @@ COPY modelV1.pth $DIR/
 
 COPY data/ $DIR/
 
-RUN ls --recursive /workdir/
+RUN ls --recursive $DIR/
 
 
 CMD python app.py
