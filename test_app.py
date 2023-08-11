@@ -25,7 +25,7 @@ def test_end_to_end_sample():
     with open(file_path , "rb") as file:
         files = {"file": file}
         response = requests.post(post_url, files=files)
-    print(response.text)
+    print(response.content['label'])
     assert response.status_code == 200
 
 
