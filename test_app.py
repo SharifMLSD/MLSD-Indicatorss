@@ -12,7 +12,7 @@ def test_get():
 def test_post():
     post_url = "https://mlsd-indicatorss.darkube.app/predict"
     print("Testing POST method: ", post_url)
-    file_path = "test_post_ci/vabemellat_30min_200.csv"
+    file_path = "vabemellat_30min_200.csv"
     with open(file_path , "rb") as file:
         files = {"file": file}
         response = requests.post(post_url, files=files)
