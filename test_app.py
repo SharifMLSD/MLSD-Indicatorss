@@ -1,5 +1,6 @@
 import requests
 import time
+from stock_load_model import test_model_ci
 
 
 def test_get():
@@ -18,8 +19,20 @@ def test_post():
         response = requests.post(post_url, files=files)
     assert response.status_code == 200
 
+def test_end_to_end_sample():
+    post_url = "https://mlsd-indicatorss.darkube.app/predict"
+    print("Testing E2E app: ", post_url)
+    file_path = "vabemellat_30min_200.csv"
+    with open(file_path , "rb") as file:
+        files = {"file": file}
+        response = requests.post(post_url, files=files)
+    print(response, '====================')
+    assert response.status_code == 200
+
 def test_model_accuracy():
-    pass
+    acc, precision = test_model_ci()
+    print(acc, '=================')
+    assert acc >= 0
 
 
 if __name__=="__main__":
