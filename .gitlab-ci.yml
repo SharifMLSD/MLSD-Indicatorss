@@ -10,7 +10,11 @@ build:
 
   stage: build
 
-test:
+test:  
+  image: registry.hamdocker.ir/mlsd-indicatorss/stockprediction/runner:v1.1
+  only:
+    refs:
+    - master
   script:
     - make test-app
   stage: test
