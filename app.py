@@ -55,7 +55,7 @@ def predict(file: UploadFile = File(...)):
     else:
         Metrics.pred_counter.labels(pred='POSITIVE').inc()
 
-    return {"label": 'Buy!' if label_pred == 1 else "Don't buy!"}
+    return {"label": label_pred}
 
 
 if __name__ == "__main__":

@@ -90,7 +90,7 @@
                 })
                     .then(response => response.json())
                     .then(data => {
-                        document.getElementById("serverMsg").innerHTML = "Predicted Label: " + "<span style='color: light-green; font-weight: bolder;'>" + data.label + "</span>"
+                        document.getElementById("serverMsg").innerHTML = "Predicted Label: " + "<span style='color: light-green; font-weight: bolder;'>" + "<%if " + data.label + " EQ '1'%>" + "Buy!" + "<%else%>" + "Don't buy!" + "<%endif%></span>"
                     })
                     .catch(error => {
                         console.error(error);
