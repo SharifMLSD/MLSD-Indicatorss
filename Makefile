@@ -31,3 +31,7 @@ test-app:
 darkube-test:
 	    docker run --rm --name test "$(IMAGE_NAME_TAG)" make test-app
 
+setup-dvc:
+	python3 -m dvc remote modify  minio access_key_id $(MINIO_ACCESS_KEY)
+	python3 -m dvc remote modify  minio secret_access_key  $(MINIO_SECRET_KEY)
+

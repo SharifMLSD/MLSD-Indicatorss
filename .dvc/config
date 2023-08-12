@@ -2,6 +2,6 @@
     remote = minio
 ['remote "minio"']
     url = s3://stock
-    endpointurl = http://stock-minio.darkube.app:9001
+    endpointurl = http://stock-minio.darkube.app
     access_key_id = fbRHFbdPBYLbbuvFRHADZnpVD86JeF7N
     secret_access_key = zhOerNqCUD3cNJk94NqoGjWdvKopXBBa
