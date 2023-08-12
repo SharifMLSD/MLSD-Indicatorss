@@ -77,12 +77,19 @@
                 reader.readAsDataURL(file);
             }
         }
-
+        function get_label_display(label) {
+            if (label < 1) {
+                return 'Buy!';
+            } else {
+                return "Don't buy!";
+            }
+        }
         function uploadFile(file) {
             var file = document.getElementById('fileInput').files[0];
             if (file) {
                 var formData = new FormData();
                 formData.append('file', file);
+                document.getElementById("serverMsg").innerHTML = "Waiting ..."
                 fetch('https://mlsd-indicatorss.darkube.app/predict', {
                     method: 'POST',
                     body: formData,
@@ -90,7 +97,7 @@
                 })
                     .then(response => response.json())
                     .then(data => {
-                        document.getElementById("serverMsg").innerHTML = "Suggestion: " + "<span style='color: light-green; font-weight: bolder;'>" + data.label + "</span>"
+                        document.getElementById("serverMsg").innerHTML = "Suggestion: " + "<span style='color: light-green; font-weight: bolder;'>" + get_label_display(data.label) + "</span>"
                     })
                     .catch(error => {
                         console.error(error);
