@@ -25,13 +25,13 @@ def test_end_to_end_sample():
     with open(file_path , "rb") as file:
         files = {"file": file}
         response = requests.post(post_url, files=files)
-    assert int(response.json()['label']) == 1
+    assert response.json()['label'] == 'Buy!'
 
 
 def test_model_accuracy():
     acc, precision = test_model_ci()
     print(acc, '=================')
-    assert acc >= 0
+    assert acc >= 0.5
 
 if __name__=="__main__":
     test_get()
