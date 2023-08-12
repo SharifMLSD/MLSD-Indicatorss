@@ -67,15 +67,15 @@
 
     <script type="text/javascript">
         function previewFile() {
-            const preview = document.querySelector('img');
+            const preview = document.querySelector('#serverMsg');
             var file = document.getElementById('fileInput').files[0];
             const reader = new FileReader();
             reader.addEventListener("load", function() {
-                preview.src = reader.result; // show image in <img> tag
+                preview.text = "File uploaded successfully:" + file.name + "\n Push the predict button to see suggestions."; // show image in <img> tag
             }, false);
-            if (file) {
-                reader.readAsDataURL(file);
-            }
+            // if (file) {
+            //     reader.readAsDataURL(file);
+            // }
         }
 
         function uploadFile(file) {
@@ -90,7 +90,7 @@
                 })
                     .then(response => response.json())
                     .then(data => {
-                        document.getElementById("serverMsg").innerHTML = "Predicted Label: " + "<span style='color: light-green; font-weight: bolder;'>" + "<%if " + data.label + " EQ '1'%>" + "Buy!" + "<%else%>" + "Don't buy!" + "<%endif%></span>"
+                        document.getElementById("serverMsg").innerHTML = "Suggestion: " + "<span style='color: light-green; font-weight: bolder;'>" + "<%if " + data.label + " EQ '1'%>" + "Buy!" + "<%else%>" + "Don't buy!" + "<%endif%></span>"
                     })
                     .catch(error => {
                         console.error(error);
@@ -103,10 +103,10 @@
         <label for="fileInput" class="custom-file-upload">
             <i class="fa fa-cloud-upload"></i> Upload .csv file
         </label>
-        <input id="fileInput" type="file" /> <!-- onchange="previewFile()"/> -->
+        <input id="fileInput" type="file" onchange="previewFile()"/>
         <input class="button" type="button" value="Predict the trend" onclick="uploadFile()">
         <button class="button" onClick="window.location.reload();">Try new .csv</button>
-        <p id="serverMsg">Predicted Label: Waiting ...</p>
+        <p id="serverMsg">Upload a .csv file and push the predict button.</p>
         <!-- <img height="200"> -->
         <p id="box"> </p>
     </div>
