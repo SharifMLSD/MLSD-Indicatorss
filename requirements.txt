@@ -9,7 +9,13 @@ python-multipart==0.0.6
 prometheus_client
 asyncio==3.4.3
 Pillow==9.4.0
-fastapi==0.96.0
 mlflow==2.4.1
 psutil==5.9.4
-Flask-Cors==4.0.0
+dvc==3.15.2
+dvc-data==2.13.1
+dvc-http==2.30.2
+dvc-objects==0.25.0
+dvc-render==0.5.3
+dvc-s3==2.23.0
+dvc-studio-client==0.13.0
+dvc-task==0.3.0
